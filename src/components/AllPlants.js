@@ -16,31 +16,30 @@ class AllPlants extends Component {
   componentDidMount() {
     var plantsRef = database.ref('/plants');
     plantsRef.on('value', (snapshot) => {
-      console.log(snapshot)
       let plantsInfo = snapshot.val();
       this.setState({plants: plantsInfo});
-      console.log(this.state.plants);
     })
   }
 
+
+
   render() {
-    let plantsToAdd = this.state.plants;
-    var plantsDiv = '';
-
-    for (var plant in plantsToAdd) {
-      let plantContainer =
-      `
-      <div className="plantContainer">
-        <div className="plantName">${plantsToAdd[plant].plantName}</div>
-         <img src="${plantsToAdd[plant].plantImage}"></img>
-      </div>
-      `
-      plantsDiv += plantContainer;
-    }
-
+      function markup() {
+        let plantsToAdd = this.state.plants;
+          return (
+              <div>
+              (Object.keys(plantsToAdd).map(function (plant, index) {
+                  <div className="plantContainer">
+                    <div className="plantName">{JSON.stringify(plantsToAdd[plant]["plantName"])}</div>
+                     <img src='{JSON.stringify(plantsToAdd[plant]["plantImage"])}'></img>
+                  </div>
+              })
+              </div>
+          )
+      }
     return (
       <div className="my-plants-container">
-        {plantsDiv}
+         {markup()}
       </div>
     );
   }
