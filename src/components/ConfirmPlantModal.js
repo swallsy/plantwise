@@ -14,6 +14,9 @@ class ConfirmPlantModal extends Component {
         <div className="plant-row">
           <h2>{this.props.plantName}</h2>
           <p>{this.props.lightNeeds} </p>
+          <p>{this.props.waterNeedsWinter} </p>
+          <p>{this.props.waterNeedsSummer} </p>
+          <p>{this.props.placementNeeds} </p>
         </div>
       </div>
     )

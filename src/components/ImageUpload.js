@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import AddPlants from './AddPlants.js';
+
 // import * as firebase from 'firebase';
 // import { database } from '../App.js';
 
@@ -15,19 +16,15 @@ class ImageUpload extends Component {
 
   handleImageChange = (event) => {
     event.preventDefault();
-
     let reader = new FileReader();
     let file = event.target.files[0];
-    console.log('this is file', file)
-
+    this.props.passThroughImage(file);
     reader.onloadend = () => {
-      console.log(reader.result);
       this.setState({
         file: file,
         imagePreviewUrl: reader.result
       });
     }
-
     reader.readAsDataURL(file);
   }
 

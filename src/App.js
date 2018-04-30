@@ -17,6 +17,7 @@ var config = {
 firebase.initializeApp(config);
 
 export var database = firebase.database();
+export var storage = firebase.storage().ref();
 
 const App = () => (
   <div className="app">
