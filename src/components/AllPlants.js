@@ -26,25 +26,22 @@ class AllPlants extends Component {
   render() {
     let plantsToAdd = this.state.plants;
     var plantsDiv = '';
+
     for (var plant in plantsToAdd) {
       let plantContainer =
       `
       <div className="plantContainer">
         <div className="plantName">${plantsToAdd[plant].plantName}</div>
-         <img href="${plantsToAdd[plant].plantImage}"></img>
+         <img src="${plantsToAdd[plant].plantImage}"></img>
       </div>
       `
       plantsDiv += plantContainer;
     }
 
-
-
     return (
-      `
       <div className="my-plants-container">
-        ${plantsDiv}
+        {plantsDiv}
       </div>
-      `
     );
   }
 }
