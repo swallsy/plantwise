@@ -1,17 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { logo } from '../plantwiselogo.jpg';
 
 // The Header creates links that can be used to navigate
 // between routes.
 const Header = () => (
   <header>
-    <nav>
-      <ul>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/addplants'>Add Plants</Link></li>
-        <li><Link to='/myplants'>My Plants</Link></li>
-      </ul>
-    </nav>
+    <img src={logo} />
   </header>
 )
 

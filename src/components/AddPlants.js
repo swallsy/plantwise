@@ -15,13 +15,17 @@ class AddPlants extends Component {
 
     this.state = {
       plantName: '',
-      plantImage: {},
+      plantImage: '',
       lightNeeds: '',
       waterNeedsSummer: '',
       waterNeedsWinter: '',
       plantNotes: '',
       placementNeeds: [],
-      //whatever is in this object is the state of the compontent
+      hardinessZoneMax: '',
+      hardinessZoneMin: '',
+      attractsButterflies: false,
+      attractsBees: false,
+      attractsHummingbirds: false
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -32,20 +36,17 @@ class AddPlants extends Component {
 
   onDrop(picture) {
       this.setState({
-          pictures: this.state.pictures.concat(picture),
+          pictures: this.state.pictures.concat(picture)
       });
   }
 
   // Grab the image and upload it to
 
   imageSubmitted(imgData){
-
-    console.log('this is the imgData', imgData)
     // Add to Firebase storage
     let imgName = imgData.name;
     var imgRef = firebase.storage().ref(imgName);
     var file = imgData;
-    console.log('this is this in the beginning of imasgeSubmitted function', this)
     imgRef.put(file).then(function(snapshot) {
     })
     storage.child(imgName).getDownloadURL().then( (url) => {
@@ -54,12 +55,27 @@ class AddPlants extends Component {
   }
 
   handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value});
+    const target = event.target;
+    const name = target.name;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({ [name]: value});
   }
 
-  handlePlacementChange = (directions) => {
-        console.log('this is this in the PlacementChange function', this)
-    this.setState({placementNeeds: directions})
+  clearForm = () => {
+    var form = document.getElementById("add-plant-form");
+    form.reset();
+    this.setState({
+      plantName: '',
+      plantImage: '',
+      lightNeeds: '',
+      waterNeedsSummer: '',
+      plantNotes: '',
+      hardinessZoneMax: '',
+      hardinessZoneMin: '',
+      attractsButterflies: null,
+      attractsHummingbirds: null,
+      attractsBees: null
+    });
   }
 
   handleSubmit(event) {
@@ -70,123 +86,163 @@ class AddPlants extends Component {
     let plantNotes = this.state.plantNotes;
     let placementNeeds = this.state.placementNeeds;
     let plantImage = this.state.plantImage;
-    console.log('this is the plantImage', plantImage)
-    database.ref(`/plants/${plantName}`).set({
+    let hardinessZoneMax = this.state.hardinessZoneMax;
+    let hardinessZoneMin = this.state.hardinessZoneMin;
+    let attractsButterflies = this.state.attractsButterflies;
+    let attractsBees = this.state.attractsBees;
+    let attractsHummingbirds = this.state.attractsHummingbirds;
+    database.ref('/plants').push({
       plantName: plantName,
       lightNeeds: lightNeeds,
-      waterNeedsWinter: waterNeedsWinter,
       waterNeedsSummer: waterNeedsSummer,
       plantNotes: plantNotes,
-      placementNeeds: placementNeeds,
       picture: plantImage,
+      hardinessMin: hardinessZoneMin,
+      hardinessMax: hardinessZoneMax,
+      attractsButterflies: attractsButterflies,
+      attractsBees: attractsBees,
+      attractsHummingbirds: attractsHummingbirds
     });
-    event.preventDefault();
+    this.clearForm();
   }
 
   render() {
     return (
-      <div className="add-plant-container">
-        <form className="add-plant-form" onSubmit={this.handleSubmit}>
-          <div className="plant-information">
+      <div className="add-plant-container section">
+        <h2>Add A Plant</h2>
+        <div className="plant-info-wrapper">
+          <form id="add-plant-form" className="add-plant-form" onSubmit={this.handleSubmit}>
+            <div className="plant-information">
 
-            <div className="left-column">
+              <div className="left-column">
+
+                <div className="plant-name plant-section">
+                  <label>Plant Name</label>
+                  <input
+                    onChange={ this.handleChange }
+                    name="plantName"
+                    type="text"
+                    className="text-field" />
+                </div>
+
+                <div className="hardiness plant-section">
+                  <label>What is the lowest zone this plant is hardy to?</label>
+                    <select
+                      name="hardinessZoneMin"
+                      onChange={ this.handleChange }>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                    </select>
+                    <span>  to  </span>
+                    <select
+                      name="hardinessZoneMax"
+                      onChange={ this.handleChange }>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                    </select>
+                </div>
 
 
-              <div className="plant-name plant-section">
-                <label>Add a New Plant to the Database</label>
-                <input
-                  onChange={ this.handleChange }
-                  name="plantName"
-                  type="text"
-                  className="text-field" />
-              </div>
+                <div className="light-requirements plant-section">
+                  <label>How much light does your plant need daily?</label>
+                    <select
+                      name="lightNeeds"
+                      onChange={ this.handleChange }>
+                      <option value="Full Shade (little to 3 hours a day)">Full Shade</option>
+                      <option value="Partial Sun (Less than 5 hours a day)">Partial Sun</option>
+                      <option value="Partial Shade (5-6 hours a day)">Partial Shade (5-6 Hours)</option>
+                      <option value="Full Sun (6+ hours a day)">Full Sun(6+ Hours)</option>
+                    </select>
+                </div>
 
 
-              <div className="light-requirements plant-section">
-                <label>How much light does your plant need daily?</label>
-                  <select
-                    name="lightNeeds"
-                    onChange={ this.handleChange }>
-                    <option value="low light">Low Light</option>
-                    <option value="low to medium light">Low to Medium Light</option>
-                    <option value="medium to high light">Medium to High Light (5-6 Hours)</option>
-                    <option value="high light">High Light(6+ Hours)</option>
-                  </select>
-              </div>
+                <div className="water-requirements plant-section">
+                  <label>What are the water requirements?</label>
+                    <select
+                      name="waterNeedsSummer"
+                      onChange={this.handleChange}>
+                      <option value="Daily">Daily</option>
+                      <option value="Every 5 Days">Every 5 Days</option>
+                      <option value="Weekly">Weekly</option>
+                      <option value="Every 10 Days">Every 10 Days</option>
+                      <option value="Monthly">Monthly</option>
+                    </select>
+                </div>
 
-              <div className="placement-requirements plant-section">
-                <label>What direction does this plant strive in? Select all that Apply.</label>
-                  <CheckboxGroup
-                  name="placementNeeds"
-                  value={this.state.placementNeeds}
-                  onChange={this.handlePlacementChange}
-                  checkboxDepth={2}>
-                    <label><Checkbox value="North"/>North</label>
-                    <label><Checkbox value="East"/>East</label>
-                    <label><Checkbox value="South"/>South</label>
-                    <label><Checkbox value="West"/>West</label>
-                  </CheckboxGroup>
-              </div>
-
-
-              <div className="water-requirements plant-section">
-                <label>What are the water needs in the Summer?</label>
-                  <select
-                    name="waterNeedsSummer"
+                <div className="notes plant-section">
+                  <label>Additional Notes About this Plant</label>
+                  <textarea
+                    name="plantNotes"
+                    value={this.state.value}
                     onChange={this.handleChange}>
-                    <option value="Every 5 Days">Daily</option>
-                    <option value="Every 5 Days">Every 5 Days</option>
-                    <option value="Weekly">Weekly</option>
-                    <option value="Every 10 Days">Every 10 Days</option>
-                    <option value="Monthly">Monthly</option>
-                  </select>
+                  </textarea>
+                </div>
               </div>
 
-              <div className="water-requirements plant-section">
-                <label>What are the water needs in the Winter?</label>
-                  <select
-                    name="waterNeedsWinter"
-                    onChange={this.handleChange}>
-                    <option value="Daily">Daily</option>
-                    <option value="Every 5 Days">Every 5 Days</option>
-                    <option value="Weekly">Weekly</option>
-                    <option value="Every 10 Days">Every 10 Days</option>
-                    <option value="Monthly">Monthly</option>
-                  </select>
+              <div className="right-column">
+                <ImageUpload passThroughImage={this.imageSubmitted} />
+                <div className="attracts-section">
+                  <h4>What does the plant attract?</h4>
+                    <div className="attract-options">
+                      <input
+                        name="attractsButterflies"
+                        type="checkbox"
+                        checked={this.state.attractsButterflies}
+                        onChange={this.handleChange}
+                      />
+                      <label>Butterflies</label>
+
+                      <input
+                        name="attractsHummingbirds"
+                        type="checkbox"
+                        checked={this.state.attractsHummingbirds}
+                        onChange={this.handleChange}
+                      />
+                      <label>Hummingbirds</label>
+
+                      <input
+                        name="attractsBees"
+                        type="checkbox"
+                        checked={this.state.attractsBees}
+                        onChange={this.handleChange}
+                      />
+                      <label>Bees</label>
+                    </div>
+                </div>
               </div>
-
-
-              <div className="notes plant-section">
-                <label>Additional Notes About this Plant</label>
-                <textarea
-                  name="plantNotes"
-                  value={this.state.value}
-                  onChange={this.handleChange}>
-                </textarea>
-              </div>
-
             </div>
-            <div className="right-column">
-              <ImageUpload passThroughImage={this.imageSubmitted} />
+
+            <div className="submission-section">
+              <input
+                className="submit-button btn"
+                type="submit"
+                value="Submit"
+                name="submitButton"
+                >
+              </input>
             </div>
-          </div>
-          <div className="submission-section">
-            <input
-              className="submit-button"
-              type="submit"
-              value="Submit">
-            </input>
-          </div>
-        </form>
-        <ConfirmPlantModal
-          plantName={this.state.plantName}
-          plantPicture={this.state.plantPicture}
-          lightNeeds={this.state.lightNeeds}
-          placementNeeds={this.state.placementNeeds}
-          waterNeedsWinter={this.state.waterNeedsWinter}
-          waterNeedsSummer={this.state.waterNeedsSummer}
-          plantNotes={this.state.plantNotes}
-          />
+          </form>
+        </div>
       </div>
     );
   }

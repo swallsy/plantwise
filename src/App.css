@@ -5,81 +5,71 @@ button:focus {
     outline: none;
 }
 
+main {
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px 10%;
+}
+
 h1 {
   margin: 0px;
   color: white;
 }
 
+h2 {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+h3 {
+  margin-top: 0px;
+  margin-bottom: 12px;
+}
+
+h4 {
+  margin-bottom: 8px;
+}
+
+.btn {
+  background: #A2AD59;
+  color: white;
+  border: none;
+  height: 50px;
+}
+
+.btn:hover {
+  background: #08605F;
+  cursor: pointer;
+}
+
+.section {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  border-bottom: #eee 1px solid;
+}
 
 .submit-button {
-  background: #bada55;
-  color: white;
   font-size: 16px;
   text-transform: uppercase;
   width: 200px;
   height: 50px;
-  border: none;
 }
 
 .submit-button:hover
 {
-  background: #465220;
+  background: #08605F;
 }
 /* home page */
-.home-page {
-  background-image:url("https://source.unsplash.com/collection/1994699/1400x875");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-}
-
-
-/* navigation/header */
-nav {
-  position: fixed;
-  bottom: 0;
-  z-index: 1;
-  background: rgba(0,0,0, .5);
-  width: 100%;
-  color: white;
-  height: 100px;
-}
-
-nav a {
-  text-decoration: none;
-  color: white;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 30%;
-  padding-right: 30%;
-  height: 100%;
-  margin: 0;
-}
-
-.add-plant-container {
-  margin-left: 20%;
-  margin-right: 20%;
-}
-
 .add-plant-container form {
   display: flex;
   flex-direction: column;
-  margin-top: 10%;
 }
 
 .add-plant-container form input {
   margin-bottom: 20px;
 }
-
 
 .add-plant-container .text-field {
     font-size: 20px;
@@ -89,20 +79,20 @@ nav ul {
     height: 50px;
 }
 
-.plant-section {
+.add-plant-container .plant-section {
   margin-bottom: 20px !important;
 }
 
-.plant-section label {
+.add-plant-container .plant-section label {
   margin-right: 10px;
 }
 
 
-.plant-name, .plant-picture, .top-row {
+.add-plant-container .plant-name, .add-plant-container .plant-picture, .add-plant-container .top-row {
   display: flex;
 }
 
-.plant-name, .plant-picture {
+.add-plant-container .plant-name, .plant-picture {
   flex-direction: column;
 }
 
@@ -113,45 +103,181 @@ nav ul {
 
 .add-plant-container .right-column {
   width: 50%;
+  padding-left: 10%;
 }
 
-.plant-upload {
-  margin-left: 100px;
-}
-
-.plant-upload label {
+.add-plant-container .plant-upload label {
   padding-bottom: 20px;
 }
 
-.plant-information {
+.add-plant-container .plant-information {
   display: flex;
 }
 
-.plant-upload .image-preview {
-  width: 300px;
-  height: 190px;
+.add-plant-container .upload-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-plant-container .plant-upload .image-preview {
+  width: 100%;
+  height: auto;
   background-position: center;
   background-size: contain;
   overflow: hidden;
 }
 
-.plant-upload .image-preview img {
+.add-plant-container .plant-upload .image-preview img {
   width: 300px;
-  height: 190px;
+  height: auto;
 }
 
-.submission-section {
+.add-plant-container .submission-section {
   width: 100%;
   text-align: center;
   padding-top: 20px;
 }
 
-.notes {
+.add-plant-container .notes {
   flex-direction: column;
   display: flex;
 }
 
-.notes textarea {
+.add-plant-container .notes textarea {
   height: 140px;
   width: 100%;
+}
+
+.attracts-section h4 {
+  margin-top: 0px;
+}
+
+.attracts-section {
+  margin-top: 40px;
+}
+
+.attracts-section label{
+  margin-left: 4px;
+  margin-right: 8px;
+}
+
+/* All Plants Area */
+
+.individual-plant-container {
+  line-height: 1.5;
+  padding: 40px;
+}
+
+.individual-plant-container:nth-child(even) {
+  background: #FBFBFF;
+}
+
+.individual-plant-container .plant-picture {
+  width: 100%;
+  height: auto;
+  opacity: 1;
+  display: block;
+  transition: .2s ease;
+}
+
+.actions-container {
+  display: none;
+  transition: .2s ease;
+  opacity: 1;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  position: absolute;
+  margin-top: 10px;
+}
+
+.actions-container button {
+  height: 40px;
+  width: 50%;
+  margin-bottom: 20px;
+  opacity: 1;
+  font-size: 14px;
+}
+
+.hardiness span {
+  font-size: 10px;
+}
+
+.image-container {
+  position: relative;
+}
+
+.image-container:hover .plant-picture {
+  opacity: .3;
+
+}
+
+.image-container:hover .actions-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  opacity: 1;
+  width: 100%;
+  height: auto;
+
+}
+
+.all-plants-container .plant-info {
+  display: flex;
+}
+
+.all-plants-container .col-1 {
+  width: 30%;
+  margin-right: 60px;
+}
+
+.all-plants-container .col-2 {
+  width: 30%;
+  max-width: 300px;
+  margin-right: 60px;
+}
+
+.all-plants-container .col-3 {
+  width: 40%;
+}
+
+.all-plants-container .light-needs h4, .all-plants-container .plant-notes h4  {
+  margin-top: 0px;
+}
+
+@media screen and (max-width: 1040px) {
+
+  main {
+      padding: 20px 5%;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  .all-plants-container .plant-info {
+    flex-direction: column;
+  }
+
+  .individual-plant-container {
+    margin-top: 32px;
+    margin-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .plant-info  .col-1, .plant-info .col-2, .plant-info .col-3 {
+    width: 100%;
+  }
+
+  .plant-info h3 {
+    margin-bottom: 32px;
+  }
+
+  .individual-plant-container .plant-info .light-needs h4 {
+    margin-top: 20px;
+  }
+
+  .plant-info-wrapper .plant-information {
+    flex-direction: column;
+  }
 }
