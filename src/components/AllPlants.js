@@ -43,7 +43,7 @@ class AllPlants extends Component {
           let plantKey = plant;
           plant = plants[plant]
           return(
-            <div className="individual-plant-container">
+            <div key={plantKey} className="individual-plant-container">
               <h3>{plant.plantName}</h3>
               <div className="plant-info">
                 <div className="col-1">
