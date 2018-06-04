@@ -3,7 +3,7 @@ import '../App.css';
 import App from '../App.js';
 import * as firebase from 'firebase';
 import { database } from '../App.js';
-
+import ConfirmationModal from './ConfirmationModal.js';
 
 class AllPlants extends Component {
   constructor(props) {
@@ -11,16 +11,18 @@ class AllPlants extends Component {
     super(props);
 
     this.state = {
-      plantsData: {}
+      plantsData: {},
+      modalMessage: ''
     }
     this.deletePlant = this.deletePlant.bind(this);
   }
 
   deletePlant(e) {
-    let keyToDelete = e.target.id;
-    database.ref(`/plants/${keyToDelete}`).remove();
+    this.setState({ modalMessage: "Are you sure you want to delete this plant?"});
+    document.querySelector('.modal').classList.add('show');
+    // let keyToDelete = e.target.id;
+    // database.ref(`/plants/${keyToDelete}`).remove();
   }
-
 
   componentDidMount() {
     // get the plant data from the database
@@ -35,6 +37,7 @@ class AllPlants extends Component {
     const plants = this.state.plantsData;
     return (
       <div className="all-plants-container section">
+        <ConfirmationModal modalMessage={this.state.modalMessage}/>
         <h2>Your Plants</h2>
         { Object.keys(plants).map((plant) => {
           let plantKey = plant;

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import '../App.css';
 import App from '../App.js';
-import ConfirmPlantModal from './ConfirmPlantModal.js';
 import ImageUpload from './ImageUpload.js';
 import * as firebase from 'firebase';
 import { database, storage } from '../App.js';
 import {Checkbox, CheckboxGroup} from 'react-checkbox-group';
+
 
 class AddPlants extends Component {
 

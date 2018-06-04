@@ -5,6 +5,11 @@ button:focus {
     outline: none;
 }
 
+
+.show {
+  display: block !important;
+}
+
 main {
   max-width: 1240px;
   margin-left: auto;
@@ -247,6 +252,19 @@ h4 {
   margin-top: 0px;
 }
 
+
+  .modal {
+    display: none;
+    position: fixed;
+    width: 50%;
+    height: 40%;
+    right: 25%;
+    top: 25%;
+    z-index: 11;
+    background: #D3D3D3
+  }
+
+
 @media screen and (max-width: 1040px) {
 
   main {
@@ -280,4 +298,6 @@ h4 {
   .plant-info-wrapper .plant-information {
     flex-direction: column;
   }
+
+
 }
