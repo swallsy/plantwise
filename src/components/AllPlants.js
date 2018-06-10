@@ -34,6 +34,7 @@ class AllPlants extends Component {
   render() {
     const plants = this.state.plantsData;
     return (
+
       <div className="all-plants-container section">
         <h2>Your Plants</h2>
         { Object.keys(plants).map((plant) => {

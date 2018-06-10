@@ -1,22 +1,20 @@
-
-<?xml version="1.0" encoding="UTF-8"?>
 <svg width="267px" height="89px" viewBox="0 0 267 89" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
-    <title>Group</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Desktop-HD" transform="translate(-1061.000000, -839.000000)">
-            <g id="Group" transform="translate(1061.000000, 836.000000)">
-                <text id="PlantWıse" font-family="AbrilFatface-Regular, Abril Fatface" font-size="53.76" font-weight="700" letter-spacing="1.5552" fill="#08605F">
-                    <tspan x="0.169919986" y="90.28">Plant</tspan>
-                    <tspan x="142.56096" y="90.28" letter-spacing="0.96">Wı</tspan>
-                    <tspan x="215.28288" y="90.28">s</tspan>
-                    <tspan x="240.16992" y="90.28">e</tspan>
-                </text>
-                <path d="M212.24,61.44 C221.84,55.2111285 226.64,48.2548416 226.64,40.5711392 C226.64,29.0455857 220.1929,2.56 212.24,2.56 C204.2871,2.56 197.84,29.0455857 197.84,40.5711392 C197.84,48.2548416 202.64,55.2111285 212.24,61.44 Z" id="Oval" fill="#08605F" transform="translate(212.240000, 32.000000) rotate(12.000000) translate(-212.240000, -32.000000) "></path>
-                <path d="M216.410003,67.2763102 C225.878119,61.2565319 230.612176,54.4047915 230.612176,46.7210892 C230.612176,35.1955356 224.165077,8.70994993 216.212176,8.70994993 C208.259276,8.70994993 201.812176,35.1955356 201.812176,46.7210892 C201.812176,54.4047915 206.678119,61.2565319 216.410003,67.2763102 Z" id="Oval" fill="#ACCC3F" transform="translate(216.212176, 37.993130) rotate(36.000000) translate(-216.212176, -37.993130) "></path>
-            </g>
-        </g>
-    </g>
-</svg>
+      <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
+      <title>Group</title>
+      <desc>Created with Sketch.</desc>
+      <defs></defs>
+      <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g id="Desktop-HD" transform="translate(-1061.000000, -839.000000)">
+              <g id="Group" transform="translate(1061.000000, 836.000000)">
+                  <text id="PlantWıse" font-family="AbrilFatface-Regular, Abril Fatface" font-size="53.76" font-weight="700" letter-spacing="1.5552" fill="#000">
+                      <tspan x="0.169919986" y="90.28">Plant</tspan>
+                      <tspan x="142.56096" y="90.28" letter-spacing="0.96">Wı</tspan>
+                      <tspan x="215.28288" y="90.28">s</tspan>
+                      <tspan x="240.16992" y="90.28">e</tspan>
+                  </text>
+                  <path d="M212.24,61.44 C221.84,55.2111285 226.64,48.2548416 226.64,40.5711392 C226.64,29.0455857 220.1929,2.56 212.24,2.56 C204.2871,2.56 197.84,29.0455857 197.84,40.5711392 C197.84,48.2548416 202.64,55.2111285 212.24,61.44 Z" id="Oval" fill="#08605F" transform="translate(212.240000, 32.000000) rotate(12.000000) translate(-212.240000, -32.000000) "></path>
+                  <path d="M216.410003,67.2763102 C225.878119,61.2565319 230.612176,54.4047915 230.612176,46.7210892 C230.612176,35.1955356 224.165077,8.70994993 216.212176,8.70994993 C208.259276,8.70994993 201.812176,35.1955356 201.812176,46.7210892 C201.812176,54.4047915 206.678119,61.2565319 216.410003,67.2763102 Z" id="Oval" fill="#ACCC3F" transform="translate(216.212176, 37.993130) rotate(36.000000) translate(-216.212176, -37.993130) "></path>
+              </g>
+          </g>
+      </g>
+  </svg>
