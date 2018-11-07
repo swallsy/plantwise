@@ -9,7 +9,6 @@ class Plants extends Component {
   render() {
     return (
       <div class="plant">
-
         <img src={plant.plantImage} class="plant-picture" />
         <div class="plant-name">{plant.plantName}</div>
       </div>
