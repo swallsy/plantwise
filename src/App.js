@@ -3,6 +3,8 @@ import './App.css';
 import Header from './components/Header.js';
 import Main from './components/Main.js';
 import * as firebase from 'firebase';
+import { connect } from 'react-redux';
+import { fetchPlants } from './actions/fetchPlants.js';
 
 // initialize Firebase
 var config = {
@@ -19,10 +21,24 @@ firebase.initializeApp(config);
 export var database = firebase.database();
 export var storage = firebase.storage().ref();
 
+const mapStateToProps = state => ({
+ ...state
+})
+
+const mapDispatchToProps = dispatch => ({
+ fetchPlants: () => dispatch(fetchPlants())
+})
+
+const fetchPlantsAction = (event) => {
+  this.props.fetchPlants();
+}
+
 const App = () => (
   <div className="app">
-    <Main />
+    <pre>{JSON.stringify(this.props)}</pre>
+    <button onClick={this.fetchPlants}>Test Redux</button>
+    // <Main />
   </div>
 )
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

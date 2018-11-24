@@ -6,12 +6,14 @@ import AllPlants from './AllPlants.js';
 import Header from './Header.js';
 
 
-const Main = () => (
-  <main>
-    <Header />
-    <AddPlants />
-    <AllPlants />
-  </main>
-)
+class Main extends Component {
 
+  const Main = () => (
+    <main>
+      <Header />
+      <AddPlants />
+      <AllPlants />
+    </main>
+  )
+}
 export default Main;

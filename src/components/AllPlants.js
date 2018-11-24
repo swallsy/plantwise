@@ -14,10 +14,10 @@ class AllPlants extends Component {
       plantsData: {},
       modalMessage: ''
     }
-    this.deletePlant = this.deletePlant.bind(this);
+
   }
 
-  deletePlant(e) {
+  const deletePlant = e => {
     this.setState({ modalMessage: "Are you sure you want to delete this plant?"});
     document.querySelector('.modal').classList.add('show');
     // let keyToDelete = e.target.id;
