@@ -42,16 +42,18 @@ class AddPlants extends Component {
 
   // Grab the image and upload it to
 
-  imageSubmitted = (imgData) => {
+  imageSubmitted(imgData){
     // Add to Firebase storage
     let imgName = imgData.name;
     var imgRef = firebase.storage().ref(imgName);
     var file = imgData;
-    imgRef.put(file).then(function(snapshot) {
+    imgRef.put(file).then((snapshot) =>  {
+      console.log('this image has been added!');
+      storage.child(imgName).getDownloadURL().then( (url) => {
+          this.setState({plantImage: url})
+      });
     })
-    storage.child(imgName).getDownloadURL().then( (url) => {
-        this.setState({plantImage: url})
-    });
+
   }
 
   handleChange(event) {

@@ -15,7 +15,9 @@ class ConfirmationModal extends Component {
       <div className="modal">
         <h3>{this.props.modalMessage}</h3>
         <div className="modal-options">
-          <button className="btn">Yes</button>
+          <button
+            onClick={this.completeAction}
+            className="btn">Yes</button>
           <button
             onClick={this.closeModal}
             className="btn">Cancel</button>

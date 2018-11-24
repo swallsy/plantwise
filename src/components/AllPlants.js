@@ -7,14 +7,12 @@ import ConfirmationModal from './ConfirmationModal.js';
 
 class AllPlants extends Component {
   constructor(props) {
-
     super(props);
 
     this.state = {
       plantsData: {},
       modalMessage: ''
     }
-
   }
 
   const deletePlant = e => {
@@ -23,6 +21,15 @@ class AllPlants extends Component {
     // let keyToDelete = e.target.id;
     // database.ref(`/plants/${keyToDelete}`).remove();
   }
+
+  deletePlant = (e) => {
+    // this.setState({ modalMessage: "Are you sure you want to delete this plant?"});
+    // document.querySelector('.modal').classList.add('show');
+    let keyToDelete = e.target.id;
+    database.ref(`/plants/${keyToDelete}`).remove();
+  }
+
+
 
   componentDidMount() {
     // get the plant data from the database
@@ -35,8 +42,8 @@ class AllPlants extends Component {
 
   render() {
     const plants = this.state.plantsData;
-    return (
 
+    return (
       <div className="all-plants-container section">
         <ConfirmationModal modalMessage={this.state.modalMessage}/>
         <h2>Your Plants</h2>
@@ -52,7 +59,7 @@ class AllPlants extends Component {
                     <div className="actions-container">
                       <button
                         id={plantKey}
-                        onClick={((e) => { this.deletePlant(e) })}
+                        onClick={this.deletePlant}
                         className="btn">Delete Plant
                       </button>
                       <button className="btn">Edit Plant</button>
